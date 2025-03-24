@@ -48,6 +48,22 @@
 <ul class="current">
 <li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 1</a>
 <ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="#projectile-motion-analysis-of-range-dependence-on-launch-angle">Projectile Motion: Analysis of Range Dependence on Launch Angle</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#1-theoretical-foundation">1. Theoretical Foundation</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#2-analysis-of-the-range">2. Analysis of the Range</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#3-practical-applications">3. Practical Applications</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#4-implementation-python-simulation">4. Implementation: Python Simulation</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#5-discussion-on-limitations">5. Discussion on Limitations</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#conclusion">Conclusion</a>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../Problem_2/">Problem 2</a>
@@ -172,11 +188,64 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-1">Problem 1</h1>
-<p>hello world</p>
-<div class="arithmatex">\[
-a^2+b^2=c^2
-\]</div>
-<p><img alt="alt text" src="../image.png"/></p>
+<h2 id="projectile-motion-analysis-of-range-dependence-on-launch-angle">Projectile Motion: Analysis of Range Dependence on Launch Angle</h2>
+<h3 id="1-theoretical-foundation"><strong>1. Theoretical Foundation</strong></h3>
+<p>Projectile motion is governed by Newton’s laws. Assuming no air resistance, the motion can be described using kinematic equations:</p>
+<ul>
+<li>Horizontal motion:
+  [ x = v_0 \cos(\theta) t ]</li>
+<li>Vertical motion:
+  [ y = v_0 \sin(\theta) t - \frac{1}{2} g t^2 ]</li>
+</ul>
+<p>The total time of flight is found by solving for when the projectile returns to its initial height:</p>
+<div class="arithmatex">\[ t_f = \frac{2 v_0 \sin(\theta)}{g} \]</div>
+<p>The horizontal range is given by:</p>
+<div class="arithmatex">\[ R = \frac{v_0^2 \sin(2\theta)}{g} \]</div>
+<h3 id="2-analysis-of-the-range"><strong>2. Analysis of the Range</strong></h3>
+<p>The horizontal range depends on:
+- <strong>Launch Angle (θ):</strong> The range is maximized at <span class="arithmatex">\( 45^\circ \)</span>.
+- <strong>Initial Velocity (<span class="arithmatex">\( v_0 \)</span>):</strong> Higher velocity increases range quadratically.
+- <strong>Gravitational Acceleration (g):</strong> A stronger gravitational field decreases range.</p>
+<h3 id="3-practical-applications"><strong>3. Practical Applications</strong></h3>
+<ul>
+<li><strong>Sports:</strong> Understanding ball trajectories in football and basketball.</li>
+<li><strong>Engineering:</strong> Designing projectile-based systems like rockets or artillery.</li>
+<li><strong>Astrophysics:</strong> Studying planetary motion under different gravity levels.</li>
+</ul>
+<h3 id="4-implementation-python-simulation"><strong>4. Implementation: Python Simulation</strong></h3>
+<p>We use Python to visualize how range varies with launch angle.</p>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+
+def projectile_range(v0, g):
+    angles = np.linspace(0, 90, 100)  # Angles in degrees
+    angles_rad = np.radians(angles)   # Convert to radians
+    ranges = (v0**2 * np.sin(2 * angles_rad)) / g
+
+    plt.figure(figsize=(8,5))
+    plt.plot(angles, ranges, label=f'v0 = {v0} m/s')
+    plt.xlabel('Launch Angle (degrees)')
+    plt.ylabel('Range (m)')
+    plt.title('Projectile Range vs. Launch Angle')
+    plt.legend()
+    plt.grid()
+    plt.show()
+
+# Example parameters
+v0 = 20  # Initial velocity in m/s
+g = 9.81 # Gravity in m/s^2
+projectile_range(v0, g)
+</code></pre>
+<h3 id="5-discussion-on-limitations"><strong>5. Discussion on Limitations</strong></h3>
+<ul>
+<li><strong>Air Resistance:</strong> In real scenarios, drag significantly reduces range.</li>
+<li><strong>Uneven Terrain:</strong> Changes in landing elevation affect results.</li>
+<li><strong>Wind Influence:</strong> Can alter trajectory unpredictably.</li>
+</ul>
+<h3 id="conclusion"><strong>Conclusion</strong></h3>
+<p>This analysis demonstrates the relationship between launch angle and range, emphasizing its significance in various real-world applications. Future studies can incorporate drag forces for more realistic modeling.</p>
+<p><img alt="alt text" src="../image-1.png"/>
+<img alt="alt text" src="../image-2.png"/></p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
