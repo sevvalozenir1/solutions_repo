@@ -188,3 +188,11 @@ projectile_range(v0, g)
 
 
 ![alt text](image.png)
+
+## My Colab
+
+[visit website](https://colab.research.google.com/drive/1AeApmcVpYZswniM9LacdcCTsymshHwa4?usp=sharing)
+
+
+
+
