@@ -5,7 +5,11 @@
 Projectile motion is governed by Newton’s laws. Assuming no air resistance, the motion can be described using kinematic equations:
 
 - Horizontal motion:
-  \[ x = v_0 \cos(\theta) t \]
+
+$$
+x = v_0 \cos(\theta) t
+$$
+
 - Vertical motion:
   \[ y = v_0 \sin(\theta) t - \frac{1}{2} g t^2 \]
 
