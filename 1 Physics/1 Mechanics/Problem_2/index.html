@@ -50,6 +50,22 @@
 </li>
 <li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 2</a>
 <ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="#investigating-the-dynamics-of-a-forced-damped-pendulum">Investigating the Dynamics of a Forced Damped Pendulum</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#motivation">Motivation</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#theoretical-foundation">Theoretical Foundation</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#numerical-simulation">Numerical Simulation</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#analysis-of-dynamics">Analysis of Dynamics</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#practical-applications">Practical Applications</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#conclusion">Conclusion</a>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -172,6 +188,74 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-2">Problem 2</h1>
+<h2 id="investigating-the-dynamics-of-a-forced-damped-pendulum">Investigating the Dynamics of a Forced Damped Pendulum</h2>
+<h3 id="motivation">Motivation</h3>
+<p>The forced damped pendulum exhibits complex dynamics due to the interplay of damping, restoring forces, and external periodic forcing. Understanding this system provides insights into resonance, chaos, and quasiperiodic motion, relevant in fields such as energy harvesting, climate systems, and mechanical vibrations.</p>
+<h3 id="theoretical-foundation">Theoretical Foundation</h3>
+<p>The equation of motion for a forced damped pendulum is:</p>
+<div class="arithmatex">\[
+\frac{d^2\theta}{dt^2} + \gamma \frac{d\theta}{dt} + \omega_0^2 \sin(\theta) = A \cos(\omega t)
+\]</div>
+<p>For small angles, we approximate <span class="arithmatex">\( \sin(\theta) \approx \theta \)</span>, reducing the equation to a linear form:</p>
+<div class="arithmatex">\[
+\frac{d^2\theta}{dt^2} + \gamma \frac{d\theta}{dt} + \omega_0^2 \theta = A \cos(\omega t)
+\]</div>
+<p>The resonance condition occurs when <span class="arithmatex">\( \omega \approx \omega_0 \)</span>, leading to maximum amplitude.</p>
+<h3 id="numerical-simulation">Numerical Simulation</h3>
+<p>We solve the nonlinear equation numerically using the Runge-Kutta method.</p>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import solve_ivp
+
+# Define the forced damped pendulum equations
+def forced_damped_pendulum(t, y, gamma, omega0, A, omega):
+    theta, omega_t = y
+    dtheta_dt = omega_t
+    domega_dt = -gamma * omega_t - omega0**2 * np.sin(theta) + A * np.cos(omega * t)
+    return [dtheta_dt, domega_dt]
+
+# Parameters
+gamma = 0.5   # Damping coefficient
+omega0 = 1.0  # Natural frequency
+A = 1.2       # Forcing amplitude
+omega = 2.0   # Forcing frequency
+
+# Initial conditions and time span
+t_span = (0, 50)
+y0 = [0.2, 0] # Initial angle and angular velocity
+t_eval = np.linspace(0, 50, 1000)
+
+# Solve the ODE
+sol = solve_ivp(forced_damped_pendulum, t_span, y0, t_eval=t_eval, args=(gamma, omega0, A, omega))
+
+# Plot results
+plt.figure(figsize=(10,5))
+plt.plot(sol.t, sol.y[0], label="Theta (angle)")
+plt.xlabel("Time")
+plt.ylabel("Angle (radians)")
+plt.title("Forced Damped Pendulum Motion")
+plt.legend()
+plt.grid()
+plt.show()
+</code></pre>
+<h3 id="analysis-of-dynamics">Analysis of Dynamics</h3>
+<ul>
+<li><strong>Effects of Parameters:</strong></li>
+<li>Increasing <span class="arithmatex">\( \gamma \)</span> leads to faster damping.</li>
+<li>Higher <span class="arithmatex">\( A \)</span> induces chaotic behavior at certain frequencies.</li>
+<li>When <span class="arithmatex">\( \omega \approx \omega_0 \)</span>, resonance occurs.</li>
+<li><strong>Chaos and Transitions:</strong></li>
+<li>A phase portrait can illustrate chaotic behavior.</li>
+<li>Poincaré sections help identify quasiperiodic or chaotic states.</li>
+</ul>
+<h3 id="practical-applications">Practical Applications</h3>
+<ul>
+<li><strong>Energy Harvesting:</strong> Used in piezoelectric devices.</li>
+<li><strong>Engineering:</strong> Suspension bridges under periodic loads.</li>
+<li><strong>Biomechanics:</strong> Modeling human gait oscillations.</li>
+</ul>
+<h3 id="conclusion">Conclusion</h3>
+<p>This study demonstrates the transition from simple periodic motion to chaos. Future extensions can include nonlinear damping or stochastic driving forces.</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
