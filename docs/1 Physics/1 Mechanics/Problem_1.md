@@ -23,8 +23,11 @@ The horizontal range is given by:
 
 ### **2. Analysis of the Range**
 The horizontal range depends on:
+
 - **Launch Angle (θ):** The range is maximized at \( 45^\circ \).
+
 - **Initial Velocity (\( v_0 \)):** Higher velocity increases range quadratically.
+
 - **Gravitational Acceleration (g):** A stronger gravitational field decreases range.
 
 ### **3. Practical Applications**
