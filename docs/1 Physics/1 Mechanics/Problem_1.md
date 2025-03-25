@@ -62,6 +62,10 @@ g = 9.81 # Gravity in m/s^2
 projectile_range(v0, g)
 ```
 
+
+
+![alt text](image-4.png)
+
 ### **5. Discussion on Limitations**
 - **Air Resistance:** In real scenarios, drag significantly reduces range.
 - **Uneven Terrain:** Changes in landing elevation affect results.
