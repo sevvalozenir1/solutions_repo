@@ -15,11 +15,14 @@ $$
 
 The total time of flight is found by solving for when the projectile returns to its initial height:
 
-\[ t_f = \frac{2 v_0 \sin(\theta)}{g} \]
-
+$$
+ t_f = \frac{2 v_0 \sin(\theta)}{g} 
+ $$
 The horizontal range is given by:
 
-\[ R = \frac{v_0^2 \sin(2\theta)}{g} \]
+$$
+R = \frac{v_0^2 \sin(2\theta)}{g} 
+$$
 
 ### **2. Analysis of the Range**
 The horizontal range depends on:
@@ -74,7 +77,7 @@ projectile_range(v0, g)
 ### **Conclusion**
 This analysis demonstrates the relationship between launch angle and range, emphasizing its significance in various real-world applications. Future studies can incorporate drag forces for more realistic modeling.
 
-![alt text](image-1.png)
+
 ![alt text](image-2.png)
 
 
@@ -96,15 +99,15 @@ Where:
 
 To achieve maximum range, **the function sin(2θ) must be maximized**. In mathematics, **sin(x) reaches its maximum value when it equals 1**, meaning:
 
-\[
-\sin(2\theta) = 1 \Rightarrow 2\theta = 90^
-\]
+$$
+\sin(2\theta) = 1 \Rightarrow 2\theta = 90
+$$
 
 From this:
 
-\[
-\theta = 45^
-\]
+$$
+\theta = 45
+$$
 
 🎯 **Conclusion:** **The maximum range is achieved at a 45° launch angle!**
 
@@ -187,7 +190,26 @@ projectile_range(v0, g)
 ✅ **Used in physics, sports, military engineering, and rocket science!** 🎯🔥
 
 
-![alt text](image.png)
+
+
+## Yatay Hareket / Horizontal Movement
+- If there is no friction, the speed remains constant.
+
+## Dikey Hareket / Vertical Movement
+- Speed decreases due to gravity and then reverses.
+
+As a result, the object follows a parabolic path and falls to the ground after traveling a certain distance.
+
+In this work, we examine the relationship between the launch angle and the distance reached by the object.
+
+Our goal is to find out how far the object travels and discover which angle provides the best range.
+
+### The important factors are:
+1. Throw angle affects range!
+2. As speed increases, so does range.
+3. For best range, we should select forty-five degrees ($45^\circ$).  
+   - The $45^\circ$ angle best balances both horizontal and vertical movement and provides the longest range.
+
 
 ## My Colab
 
