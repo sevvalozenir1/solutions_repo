@@ -202,9 +202,13 @@ x = v_0 \cos(\theta) t
   [ y = v_0 \sin(\theta) t - \frac{1}{2} g t^2 ]</li>
 </ul>
 <p>The total time of flight is found by solving for when the projectile returns to its initial height:</p>
-<div class="arithmatex">\[ t_f = \frac{2 v_0 \sin(\theta)}{g} \]</div>
-<p>The horizontal range is given by:</p>
-<div class="arithmatex">\[ R = \frac{v_0^2 \sin(2\theta)}{g} \]</div>
+<p>$$
+ t_f = \frac{2 v_0 \sin(\theta)}{g} 
+ $$
+The horizontal range is given by:</p>
+<div class="arithmatex">\[
+R = \frac{v_0^2 \sin(2\theta)}{g} 
+\]</div>
 <h3 id="2-analysis-of-the-range"><strong>2. Analysis of the Range</strong></h3>
 <p>The horizontal range depends on:</p>
 <ul>
@@ -257,8 +261,7 @@ projectile_range(v0, g)
 </ul>
 <h3 id="conclusion"><strong>Conclusion</strong></h3>
 <p>This analysis demonstrates the relationship between launch angle and range, emphasizing its significance in various real-world applications. Future studies can incorporate drag forces for more realistic modeling.</p>
-<p><img alt="alt text" src="../image-1.png"/>
-<img alt="alt text" src="../image-2.png"/></p>
+<p><img alt="alt text" src="../image-2.png"/></p>
 <h1 id="why-is-the-maximum-range-achieved-at-a-45-angle">🚀 Why is the Maximum Range Achieved at a 45° Angle?</h1>
 <h2 id="range-formula-and-maximum-point">📌 Range Formula and Maximum Point</h2>
 <p>The total horizontal distance (<strong>range</strong>) covered by a projectile depends on the launch angle and is given by:</p>
@@ -273,11 +276,11 @@ R = \frac{v_0^2 \sin(2\theta)}{g}
 - <strong>sin(2θ)</strong> = Function determining the impact of angle on range</p>
 <p>To achieve maximum range, <strong>the function sin(2θ) must be maximized</strong>. In mathematics, <strong>sin(x) reaches its maximum value when it equals 1</strong>, meaning:</p>
 <div class="arithmatex">\[
-\sin(2\theta) = 1 \Rightarrow 2\theta = 90^
+\sin(2\theta) = 1 \Rightarrow 2\theta = 90
 \]</div>
 <p>From this:</p>
 <div class="arithmatex">\[
-\theta = 45^
+\theta = 45
 \]</div>
 <p>🎯 <strong>Conclusion:</strong> <strong>The maximum range is achieved at a 45° launch angle!</strong></p>
 <hr/>
@@ -352,7 +355,24 @@ projectile_range(v0, g)
 ✅ <strong>It provides the best balance between horizontal and vertical velocity.</strong>
 ✅ <strong>In real-world scenarios, air resistance can slightly modify the optimal angle.</strong>
 ✅ <strong>Used in physics, sports, military engineering, and rocket science!</strong> 🎯🔥</p>
-<p><img alt="alt text" src="../image.png"/></p>
+<h2 id="yatay-hareket-horizontal-movement">Yatay Hareket / Horizontal Movement</h2>
+<ul>
+<li>If there is no friction, the speed remains constant.</li>
+</ul>
+<h2 id="dikey-hareket-vertical-movement">Dikey Hareket / Vertical Movement</h2>
+<ul>
+<li>Speed decreases due to gravity and then reverses.</li>
+</ul>
+<p>As a result, the object follows a parabolic path and falls to the ground after traveling a certain distance.</p>
+<p>In this work, we examine the relationship between the launch angle and the distance reached by the object.</p>
+<p>Our goal is to find out how far the object travels and discover which angle provides the best range.</p>
+<h3 id="the-important-factors-are">The important factors are:</h3>
+<ol>
+<li>Throw angle affects range!</li>
+<li>As speed increases, so does range.</li>
+<li>For best range, we should select forty-five degrees (<span class="arithmatex">\(45^\circ\)</span>).  </li>
+<li>The <span class="arithmatex">\(45^\circ\)</span> angle best balances both horizontal and vertical movement and provides the longest range.</li>
+</ol>
 <h2 id="my-colab">My Colab</h2>
 <p><a href="https://colab.research.google.com/drive/1AeApmcVpYZswniM9LacdcCTsymshHwa4?usp=sharing">visit website</a></p>
 </div>
