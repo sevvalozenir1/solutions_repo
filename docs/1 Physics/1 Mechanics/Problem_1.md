@@ -211,6 +211,63 @@ Our goal is to find out how far the object travels and discover which angle prov
    - The $45^\circ$ angle best balances both horizontal and vertical movement and provides the longest range.
 
 
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Constants
+g = 9.81  # Gravitational acceleration (m/s^2)
+v0 = 800  # Bullet initial velocity (m/s)
+angles = np.arange(10, 21, 2)  # Shooting angles (between 10° and 20° with 2° increments)
+
+# Function to calculate range
+def calculate_range(v0, angle):
+    theta = np.radians(angle)
+    return (v0 ** 2) * np.sin(2 * theta) / g
+
+# Calculate range for given angles
+ranges = [calculate_range(v0, angle) for angle in angles]
+
+# Plot the graph
+plt.figure(figsize=(8, 5))
+plt.plot(angles, ranges, marker='o', linestyle='-', color='b', label='Bullet Range')
+plt.xlabel('Shooting Angle (°)')
+plt.ylabel('Range (m)')
+plt.title('Range vs. Shooting Angle')
+plt.legend()
+plt.grid()
+plt.show()
+
+# Differential equation in Markdown format
+md_equation = """
+### Differential Equations of Bullet Motion
+
+Bullet motion can be modeled in two dimensions:
+
+1. **Horizontal motion:**
+   $$
+    \frac{dx}{dt} = v_x = v_0 \cos(\theta) 
+    $$
+
+
+2. **Vertical motion:**
+   $$
+    \frac{dy}{dt} = v_y 
+    $$
+   $$
+    \frac{dv_y}{dt} = -g $$
+
+Where:
+- \( x \) and \( y \) are the position coordinates of the bullet.
+- \( v_x \) and \( v_y \) are the horizontal and vertical velocity components, respectively.
+- \( g \) is the gravitational acceleration.
+- \( \theta \) is the shooting angle.
+
+To solve these differential equations, numerical methods (such as the Euler method) can be used.
+"""
+print(md_equation)
+
+
+
 ## My Colab
 
 [visit website](https://colab.research.google.com/drive/1AeApmcVpYZswniM9LacdcCTsymshHwa4?usp=sharing)
