@@ -237,8 +237,7 @@ plt.legend()
 plt.grid()
 plt.show()
 
-# Differential equation in Markdown format
-md_equation = """
+
 ### Differential Equations of Bullet Motion
 
 Bullet motion can be modeled in two dimensions:
