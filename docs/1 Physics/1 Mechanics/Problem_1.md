@@ -255,17 +255,21 @@ plt.show()
 Bullet motion can be modeled in two dimensions:
 
 1. **Horizontal motion:**
+
    $$
     \frac{dx}{dt} = v_x = v_0 \cos(\theta) 
     $$
 
 
 2. **Vertical motion:**
+
    $$
     \frac{dy}{dt} = v_y 
     $$
+
    $$
-    \frac{dv_y}{dt} = -g $$
+    \frac{dv_y}{dt} = -g 
+    $$
 
 Where:
 -  x \) and \( y \) are the position coordinates of the bullet.
