@@ -222,6 +222,7 @@ Our goal is to find out how far the object travels and discover which angle prov
 3. For best range, we should select forty-five degrees ($45^\circ$).  
    - The $45^\circ$ angle best balances both horizontal and vertical movement and provides the longest range.
 
+```python
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -232,6 +233,7 @@ v0 = 800  # Bullet initial velocity (m/s)
 angles = np.arange(10, 21, 2)  # Shooting angles (between 10° and 20° with 2° increments)
 
 # Function to calculate range
+
 def calculate_range(v0, angle):
     theta = np.radians(angle)
     return (v0 ** 2) * np.sin(2 * theta) / g
@@ -240,6 +242,9 @@ def calculate_range(v0, angle):
 ranges = [calculate_range(v0, angle) for angle in angles]
 
 # Plot the graph
+
+
+
 plt.figure(figsize=(8, 5))
 plt.plot(angles, ranges, marker='o', linestyle='-', color='b', label='Bullet Range')
 plt.xlabel('Shooting Angle (°)')
@@ -248,6 +253,8 @@ plt.title('Range vs. Shooting Angle')
 plt.legend()
 plt.grid()
 plt.show()
+
+```
 
 
 ### Differential Equations of Bullet Motion
@@ -343,11 +350,6 @@ def projectile_motion(v0, theta, g=9.81, dt=0.01):
     y = v0y * t - 0.5 * g * t**2
     
     return x, y
-29:32
-
-
-
-
 
 # Define initial velocities and angles for both plots
 velocities_a = [30, 40, 50]
@@ -389,7 +391,7 @@ plt.show()
 
 ## My Colab
 
-[visit website] https://colab.research.google.com/drive/1AeApmcVpYZswniM9LacdcCTsymshHwa4?usp=sharing
+[visit website](https://colab.research.google.com/drive/1AeApmcVpYZswniM9LacdcCTsymshHwa4?usp=sharing)
 
 
 
