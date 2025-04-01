@@ -278,8 +278,9 @@ Where:
 - \( \theta \) is the shooting angle.
 
 To solve these differential equations, numerical methods (such as the Euler method) can be used.
-"""
-print(md_equation)
+
+
+```python
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -319,10 +320,12 @@ plt.legend()
 plt.grid()
 plt.show()
 
+```
+
 ![alt text](image-8.png)
 
 
-
+```python
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -377,6 +380,8 @@ axs[1].set_title("(b) Projectile motion with 50 m/s at different angles")
 
 plt.tight_layout()
 plt.show()
+
+```
 
 ![alt text](image-7.png)
 
