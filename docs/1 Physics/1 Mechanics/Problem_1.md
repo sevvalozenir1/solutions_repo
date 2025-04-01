@@ -268,7 +268,7 @@ Bullet motion can be modeled in two dimensions:
     \frac{dv_y}{dt} = -g $$
 
 Where:
-- \( x \) and \( y \) are the position coordinates of the bullet.
+-  x \) and \( y \) are the position coordinates of the bullet.
 - \( v_x \) and \( v_y \) are the horizontal and vertical velocity components, respectively.
 - \( g \) is the gravitational acceleration.
 - \( \theta \) is the shooting angle.
@@ -277,11 +277,110 @@ To solve these differential equations, numerical methods (such as the Euler meth
 """
 print(md_equation)
 
+import numpy as np
+import matplotlib.pyplot as plt
+
+def projectile_motion(v0, theta, h0, g=9.81, dt=0.01):
+    theta = np.radians(theta)
+    v0x = v0 * np.cos(theta)
+    v0y = v0 * np.sin(theta)
+    
+    t_flight = (v0y + np.sqrt(v0y**2 + 2 * g * h0)) / g * 2
+    t = np.arange(0, t_flight, dt)
+    
+    x = v0x * t
+    y = h0 + v0y * t - 0.5 * g * t**2
+    y = np.maximum(y, 0)  # Ensure it doesn't go below ground
+
+    return x, y
+
+# Define initial velocities, angles, and launch heights
+v0 = 50  # Initial velocity in m/s
+theta = 45  # Launch angle in degrees
+heights = [0, 10, 20]  # Different launch heights
+
+# Plot the projectile motion for different launch heights
+plt.figure(figsize=(8, 6))
+colors = ['red', 'purple', 'blue']
+
+for h, color in zip(heights, colors):
+    x, y = projectile_motion(v0, theta, h)
+    plt.plot(x, y, label=f"h0 = {h} m", color=color)
+
+plt.axhline(0, color='black', linewidth=1)  # Ground line
+plt.xlabel("Range (m)")
+plt.ylabel("Height (m)")
+plt.title("Projectile Motion at Different Initial Heights")
+plt.legend()
+plt.grid()
+plt.show()
+
+![alt text](image-8.png)
+
+
+
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+def projectile_motion(v0, theta, g=9.81, dt=0.01):
+    """Compute projectile motion given initial velocity and angle."""
+    theta = np.radians(theta)
+    v0x = v0 * np.cos(theta)
+    v0y = v0 * np.sin(theta)
+    
+    t_flight = (2 * v0y) / g
+    t = np.arange(0, t_flight, dt)
+    
+    x = v0x * t
+    y = v0y * t - 0.5 * g * t**2
+    
+    return x, y
+29:32
+
+
+
+
+
+# Define initial velocities and angles for both plots
+velocities_a = [30, 40, 50]
+angles_a = [45, 45, 45]
+
+velocities_b = [50, 50, 50]
+angles_b = [15, 45, 75]
+
+# Create figure and subplots
+fig, axs = plt.subplots(2, 1, figsize=(8, 10))
+colors = ['red', 'purple', 'green']
+
+def plot_projectiles(ax, velocities, angles, colors):
+    for v0, theta, color in zip(velocities, angles, colors):
+        x, y = projectile_motion(v0, theta)
+        ax.plot(x, y, color=color, label=f'v0 = {v0} m/s, {theta}°')
+    ax.axhline(0, color='black', linewidth=1)  # Ground line
+    ax.set_xlabel("Range (m)")
+    ax.set_ylabel("Height (m)")
+    ax.legend()
+    ax.grid()
+
+# Plot (a)
+plot_projectiles(axs[0], velocities_a, angles_a, colors)
+axs[0].set_title("(a) Projectile motion with different velocities at 45°")
+
+# Plot (b)
+plot_projectiles(axs[1], velocities_b, angles_b, colors)
+axs[1].set_title("(b) Projectile motion with 50 m/s at different angles")
+
+plt.tight_layout()
+plt.show()
+
+![alt text](image-7.png)
+
 
 
 ## My Colab
 
-[visit website](https://colab.research.google.com/drive/1AeApmcVpYZswniM9LacdcCTsymshHwa4?usp=sharing)
+[visit website] https://colab.research.google.com/drive/1AeApmcVpYZswniM9LacdcCTsymshHwa4?usp=sharing
 
 
 
