@@ -29,9 +29,19 @@ $$
 ### **2. Analysis of the Range**
 The horizontal range depends on:
 
-- **Launch Angle (θ):** The range is maximized at \( 45^\circ \).
+- **Launch Angle (θ):** The range is maximized at 
 
-- **Initial Velocity (\( v_0 \)):** Higher velocity increases range quadratically.
+$$
+ 45^\circ 
+ $$
+
+- **Initial Velocity 
+
+$$
+( v_0 )
+$$
+
+:** Higher velocity increases range quadratically.
 
 - **Gravitational Acceleration (g):** A stronger gravitational field decreases range.
 
@@ -88,9 +98,9 @@ This analysis demonstrates the relationship between launch angle and range, emph
 ## 📌 Range Formula and Maximum Point
 The total horizontal distance (**range**) covered by a projectile depends on the launch angle and is given by:
 
-\[
+$$
 R = \frac{v_0^2 \sin(2\theta)}{g}
-\]
+$$
 
 Where:
 - **R** = Range (total horizontal distance covered)
