@@ -11,7 +11,9 @@ x = v_0 \cos(\theta) t
 $$
 
 - Vertical motion:
-  \[ y = v_0 \sin(\theta) t - \frac{1}{2} g t^2 \]
+  $$
+  y = v_0 \sin(\theta) t - \frac{1}{2} g t^2 
+  $$
 
 The total time of flight is found by solving for when the projectile returns to its initial height:
 
