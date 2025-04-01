@@ -380,27 +380,38 @@ projectile_range(v0, g)
 <li>For best range, we should select forty-five degrees (<span class="arithmatex">\(45^\circ\)</span>).  </li>
 <li>The <span class="arithmatex">\(45^\circ\)</span> angle best balances both horizontal and vertical movement and provides the longest range.</li>
 </ol>
-<p>import numpy as np
-import matplotlib.pyplot as plt</p>
-<h1 id="constants">Constants</h1>
-<p>g = 9.81  # Gravitational acceleration (m/s^2)
+<pre><code class="language-python">
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Constants
+g = 9.81  # Gravitational acceleration (m/s^2)
 v0 = 800  # Bullet initial velocity (m/s)
-angles = np.arange(10, 21, 2)  # Shooting angles (between 10° and 20° with 2° increments)</p>
-<h1 id="function-to-calculate-range">Function to calculate range</h1>
-<p>def calculate_range(v0, angle):
+angles = np.arange(10, 21, 2)  # Shooting angles (between 10° and 20° with 2° increments)
+
+# Function to calculate range
+
+def calculate_range(v0, angle):
     theta = np.radians(angle)
-    return (v0 ** 2) * np.sin(2 * theta) / g</p>
-<h1 id="calculate-range-for-given-angles">Calculate range for given angles</h1>
-<p>ranges = [calculate_range(v0, angle) for angle in angles]</p>
-<h1 id="plot-the-graph">Plot the graph</h1>
-<p>plt.figure(figsize=(8, 5))
+    return (v0 ** 2) * np.sin(2 * theta) / g
+
+# Calculate range for given angles
+ranges = [calculate_range(v0, angle) for angle in angles]
+
+# Plot the graph
+
+
+
+plt.figure(figsize=(8, 5))
 plt.plot(angles, ranges, marker='o', linestyle='-', color='b', label='Bullet Range')
 plt.xlabel('Shooting Angle (°)')
 plt.ylabel('Range (m)')
 plt.title('Range vs. Shooting Angle')
 plt.legend()
 plt.grid()
-plt.show()</p>
+plt.show()
+
+</code></pre>
 <h3 id="differential-equations-of-bullet-motion">Differential Equations of Bullet Motion</h3>
 <p>Bullet motion can be modeled in two dimensions:</p>
 <ol>
@@ -482,11 +493,6 @@ def projectile_motion(v0, theta, g=9.81, dt=0.01):
     y = v0y * t - 0.5 * g * t**2
 
     return x, y
-29:32
-
-
-
-
 
 # Define initial velocities and angles for both plots
 velocities_a = [30, 40, 50]
@@ -523,7 +529,7 @@ plt.show()
 </code></pre>
 <p><img alt="alt text" src="../image-7.png"/></p>
 <h2 id="my-colab">My Colab</h2>
-<p>[visit website] https://colab.research.google.com/drive/1AeApmcVpYZswniM9LacdcCTsymshHwa4?usp=sharing</p>
+<p><a href="https://colab.research.google.com/drive/1AeApmcVpYZswniM9LacdcCTsymshHwa4?usp=sharing">visit website</a></p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
