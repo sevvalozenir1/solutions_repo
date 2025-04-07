@@ -7,17 +7,29 @@ The forced damped pendulum exhibits complex dynamics due to the interplay of dam
 ### Theoretical Foundation
 The equation of motion for a forced damped pendulum is:
 
-\[
+$$
 \frac{d^2\theta}{dt^2} + \gamma \frac{d\theta}{dt} + \omega_0^2 \sin(\theta) = A \cos(\omega t)
-\]
+$$
 
-For small angles, we approximate \( \sin(\theta) \approx \theta \), reducing the equation to a linear form:
+For small angles, we approximate 
 
-\[
+$$
+ \sin(\theta) \approx \theta 
+ $$
+ 
+ , reducing the equation to a linear form:
+
+$$
 \frac{d^2\theta}{dt^2} + \gamma \frac{d\theta}{dt} + \omega_0^2 \theta = A \cos(\omega t)
-\]
+$$
 
-The resonance condition occurs when \( \omega \approx \omega_0 \), leading to maximum amplitude.
+The resonance condition occurs when 
+
+$$
+ \omega \approx \omega_0 
+ $$
+ 
+ , leading to maximum amplitude.
 
 ### Numerical Simulation
 We solve the nonlinear equation numerically using the Runge-Kutta method.
@@ -59,11 +71,31 @@ plt.grid()
 plt.show()
 ```
 
+![alt text](image-11.png)
+
 ### Analysis of Dynamics
 - **Effects of Parameters:**
-  - Increasing \( \gamma \) leads to faster damping.
-  - Higher \( A \) induces chaotic behavior at certain frequencies.
-  - When \( \omega \approx \omega_0 \), resonance occurs.
+  - Increasing 
+  
+  $$ 
+  \gamma 
+  $$ 
+  
+  leads to faster damping.
+  - Higher 
+  
+  $$
+   A 
+   $$
+   
+    induces chaotic behavior at certain frequencies.
+  - When 
+  
+  $$
+   \omega \approx \omega_0 
+   $$
+   
+   , resonance occurs.
 - **Chaos and Transitions:**
   - A phase portrait can illustrate chaotic behavior.
   - Poincaré sections help identify quasiperiodic or chaotic states.
