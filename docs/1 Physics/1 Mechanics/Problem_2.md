@@ -108,7 +108,7 @@ plt.show()
 ### Conclusion
 This study demonstrates the transition from simple periodic motion to chaos. Future extensions can include nonlinear damping or stochastic driving forces.
 
-# Sarkacın 5 Durumu için Grafikler (Python Kodları)
+# Graphs for 5 States of Pendulum (Python Codes)
 
 ```python
 import numpy as np
