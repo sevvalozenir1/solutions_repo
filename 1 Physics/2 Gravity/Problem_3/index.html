@@ -172,6 +172,127 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-3">Problem 3</h1>
+<h1 id="trajectories-of-a-freely-released-payload-near-earth"># Trajectories of a Freely Released Payload Near Earth</h1>
+<h2 id="motivation">Motivation</h2>
+<p>The trajectory of an object released from a moving rocket depends on its initial velocity and the gravitational influence of Earth. By analyzing these trajectories, we can understand orbital insertion, reentry paths, or escape scenarios. This knowledge is essential in space mission planning, satellite deployment, and reentry vehicle design.</p>
+<hr/>
+<h2 id="physics-background">Physics Background</h2>
+<h3 id="newtons-law-of-gravitation">Newton's Law of Gravitation:</h3>
+<div class="arithmatex">\[
+F = \frac{GMm}{r^2} \Rightarrow a = \frac{GM}{r^2} 
+\]</div>
+<p>This acceleration acts towards the center of Earth.</p>
+<h3 id="types-of-trajectories">Types of Trajectories</h3>
+<ul>
+<li><strong>Circular Orbit</strong>: Object moves with constant speed in a circular path.</li>
+<li><strong>Elliptical Orbit</strong>: Object is bound to Earth but not at a constant distance.</li>
+<li><strong>Parabolic Escape</strong>: Minimum speed to escape Earth's gravity.</li>
+<li><strong>Hyperbolic Escape</strong>: Object escapes Earth with excess velocity.</li>
+<li><strong>Suborbital Trajectory</strong>: Falls back to Earth before completing an orbit.</li>
+</ul>
+<hr/>
+<h2 id="python-simulation-of-payload-trajectories">Python Simulation of Payload Trajectories</h2>
+<h3 id="required-libraries">Required Libraries</h3>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import solve_ivp
+</code></pre>
+<h3 id="constants">Constants</h3>
+<pre><code class="language-python">G = 6.67430e-11  # m^3/kg/s^2
+M_earth = 5.972e24  # kg
+R_earth = 6371e3  # m
+mu = G * M_earth
+</code></pre>
+<h3 id="equations-of-motion">Equations of Motion</h3>
+<pre><code class="language-python">def equations(t, y):
+    x, vx, y_pos, vy = y
+    r = np.sqrt(x**2 + y_pos**2)
+    ax = -mu * x / r**3
+    ay = -mu * y_pos / r**3
+    return [vx, ax, vy, ay]
+</code></pre>
+<h3 id="initial-conditions-and-solver">Initial Conditions and Solver</h3>
+<pre><code class="language-python"># Choose an altitude and initial velocity (vary this to simulate different cases)
+altitude = 300e3  # 300 km
+r0 = R_earth + altitude
+v_circular = np.sqrt(mu / r0)  # Circular orbital speed
+
+# Modify initial velocity to simulate different trajectories
+initial_conditions = {
+    'suborbital': [0, 0.7 * v_circular],
+    'circular': [0, v_circular],
+    'elliptical': [0, 1.1 * v_circular],
+    'escape': [0, np.sqrt(2) * v_circular],
+}
+
+fig, ax = plt.subplots(figsize=(8, 8))
+
+for label, vy0 in initial_conditions.items():
+    y0 = [r0, 0, 0, vy0]  # x, vx, y, vy
+    sol = solve_ivp(equations, [0, 10000], y0, t_eval=np.linspace(0, 10000, 5000))
+    x = sol.y[0]
+    y = sol.y[2]
+    ax.plot(x / 1e3, y / 1e3, label=label)
+
+# Earth
+earth = plt.Circle((0, 0), R_earth / 1e3, color='blue', alpha=0.3)
+ax.add_patch(earth)
+
+ax.set_xlabel('x (km)')
+ax.set_ylabel('y (km)')
+ax.set_title('Payload Trajectories near Earth')
+ax.set_aspect('equal')
+ax.legend()
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+</code></pre>
+<hr/>
+<h2 id="applications-in-space-missions">Applications in Space Missions</h2>
+<ul>
+<li><strong>Orbital Insertion</strong>: Matching circular or elliptical orbits for satellites.</li>
+<li><strong>Escape Trajectory</strong>: Interplanetary missions (e.g., to Mars).</li>
+<li><strong>Reentry Design</strong>: Predicting where a returning capsule will land.</li>
+</ul>
+<hr/>
+<h2 id="conclusion">Conclusion</h2>
+<p>By changing the initial velocity of a payload, we observe distinct paths that help classify motion near Earth. Simulating these paths enhances our understanding of celestial mechanics and supports mission-critical decisions in aerospace engineering.</p>
+<pre><code class="language-python">radii = np.linspace(R_earth, R_earth + 2e6, 500)
+v_orbit = np.sqrt(mu / radii) / 1e3      # km/s
+v_escape = np.sqrt(2 * mu / radii) / 1e3 # km/s
+
+plt.figure(figsize=(8, 5))
+plt.plot((radii - R_earth) / 1e3, v_orbit, label='Orbital Velocity')
+plt.plot((radii - R_earth) / 1e3, v_escape, label='Escape Velocity')
+plt.xlabel('Altitude (km)')
+plt.ylabel('Velocity (km/s)')
+plt.title('Velocity vs Altitude Near Earth')
+plt.legend()
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+</code></pre>
+<p><img alt="alt text" src="../image-5.png"/></p>
+<pre><code class="language-python">x = np.linspace(-2e7, 2e7, 40)
+y = np.linspace(-2e7, 2e7, 40)
+X, Y = np.meshgrid(x, y)
+R = np.sqrt(X**2 + Y**2)
+ax = -mu * X / R**3
+ay = -mu * Y / R**3
+
+plt.figure(figsize=(7, 7))
+plt.streamplot(X/1e6, Y/1e6, ax, ay, color=np.sqrt(ax**2 + ay**2), cmap='plasma')
+earth = plt.Circle((0, 0), R_earth / 1e6, color='blue', alpha=0.3)
+plt.gca().add_patch(earth)
+plt.xlabel('X (10⁶ m)')
+plt.ylabel('Y (10⁶ m)')
+plt.title('Gravitational Vector Field Around Earth')
+plt.grid(True)
+plt.axis('equal')
+plt.show()
+</code></pre>
+<p><img alt="alt text" src="../image-6.png"/></p>
+<p><a href="https://colab.research.google.com/drive/1sndCMzPXDamm9P4kyI4kwXrh5LwAy25c?usp=sharing">visit website</a></p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
