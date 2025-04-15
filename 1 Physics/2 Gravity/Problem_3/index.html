@@ -191,26 +191,6 @@ F = \frac{GMm}{r^2} \Rightarrow a = \frac{GM}{r^2}
 <li><strong>Suborbital Trajectory</strong>: Falls back to Earth before completing an orbit.</li>
 </ul>
 <hr/>
-<h2 id="python-simulation-of-payload-trajectories">Python Simulation of Payload Trajectories</h2>
-<h3 id="required-libraries">Required Libraries</h3>
-<pre><code class="language-python">import numpy as np
-import matplotlib.pyplot as plt
-from scipy.integrate import solve_ivp
-</code></pre>
-<h3 id="constants">Constants</h3>
-<pre><code class="language-python">G = 6.67430e-11  # m^3/kg/s^2
-M_earth = 5.972e24  # kg
-R_earth = 6371e3  # m
-mu = G * M_earth
-</code></pre>
-<h3 id="equations-of-motion">Equations of Motion</h3>
-<pre><code class="language-python">def equations(t, y):
-    x, vx, y_pos, vy = y
-    r = np.sqrt(x**2 + y_pos**2)
-    ax = -mu * x / r**3
-    ay = -mu * y_pos / r**3
-    return [vx, ax, vy, ay]
-</code></pre>
 <h3 id="initial-conditions-and-solver">Initial Conditions and Solver</h3>
 <pre><code class="language-python"># Choose an altitude and initial velocity (vary this to simulate different cases)
 altitude = 300e3  # 300 km
