@@ -81,7 +81,21 @@ for body in velocities:
     print()
 ```
 
+Earth:
+  First Cosmic Velocity (v1): 7.91 km/s
+  Second Cosmic Velocity (v2): 11.18 km/s
+  Third Cosmic Velocity (v3): 16.70 km/s
+
+Mars:
+  First Cosmic Velocity (v1): 3.55 km/s
+  Second Cosmic Velocity (v2): 5.02 km/s
+
+Jupiter:
+  First Cosmic Velocity (v1): 42.07 km/s
+  Second Cosmic Velocity (v2): 59.49 km/s
+
 ### Bar Chart of Velocities
+
 ```python
 # Bar chart
 labels = list(bodies.keys())
@@ -106,6 +120,26 @@ ax.grid(True)
 plt.tight_layout()
 plt.show()
 ```
+
+X-axis: Planet names (Earth, Mars, Jupiter)
+
+Y-axis: Velocities in km/s
+
+Three bars for each body:
+
+v₁ (Orbit): First cosmic velocity (to orbit the planet)
+
+v₂ (Escape): Second cosmic velocity (to escape the planet’s gravity)
+
+v₃ (Solar Escape): Third cosmic velocity (escape the Solar System from that planet) – only Earth has a defined value
+
+For example:
+
+Earth will show 7.91 (v₁), 11.18 (v₂), 16.70 (v₃)
+
+Mars will show 3.55 (v₁), 5.02 (v₂), 0 (v₃ bar won't be visible)
+
+Jupiter will show 42.07 (v₁), 59.49 (v₂), 0 (v₃ bar won't be visible)
 
 ---
 
