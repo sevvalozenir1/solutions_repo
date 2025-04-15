@@ -26,33 +26,6 @@ This acceleration acts towards the center of Earth.
 
 ---
 
-## Python Simulation of Payload Trajectories
-
-### Required Libraries
-```python
-import numpy as np
-import matplotlib.pyplot as plt
-from scipy.integrate import solve_ivp
-```
-
-### Constants
-```python
-G = 6.67430e-11  # m^3/kg/s^2
-M_earth = 5.972e24  # kg
-R_earth = 6371e3  # m
-mu = G * M_earth
-```
-
-### Equations of Motion
-```python
-def equations(t, y):
-    x, vx, y_pos, vy = y
-    r = np.sqrt(x**2 + y_pos**2)
-    ax = -mu * x / r**3
-    ay = -mu * y_pos / r**3
-    return [vx, ax, vy, ay]
-```
-
 ### Initial Conditions and Solver
 ```python
 # Choose an altitude and initial velocity (vary this to simulate different cases)
