@@ -39,71 +39,6 @@ import matplotlib.pyplot as plt
 
 ---
 
-## Constants and Helper Functions
-```python
-# Wave parameters
-A = 1.0             # Amplitude
-wavelength = 1.0   # Wavelength
-k = 2 * np.pi / wavelength  # Wave number
-f = 1.0             # Frequency
-omega = 2 * np.pi * f       # Angular frequency
-phi = 0             # Phase
-
-# Grid setup
-x = np.linspace(-5, 5, 500)
-y = np.linspace(-5, 5, 500)
-X, Y = np.meshgrid(x, y)
-
-# Time snapshot
-t = 0.0
-
-# Number of sources and polygon radius
-N = 5  # e.g., regular pentagon
-radius = 2.0
-
-# Generate point sources at polygon vertices
-def generate_polygon_sources(N, radius):
-    angles = np.linspace(0, 2 * np.pi, N, endpoint=False)
-    return [(radius * np.cos(a), radius * np.sin(a)) for a in angles]
-
-sources = generate_polygon_sources(N, radius)
-```
-
----
-
-## Wave Superposition
-```python
-# Superposition of waves from N sources
-Z = np.zeros_like(X)
-
-for sx, sy in sources:
-    r = np.sqrt((X - sx)**2 + (Y - sy)**2)
-    Z += A * np.sin(k * r - omega * t + phi)
-```
-
----
-
-## Visualization
-```python
-plt.figure(figsize=(8, 8))
-plt.contourf(X, Y, Z, levels=100, cmap='coolwarm')
-plt.colorbar(label='Displacement')
-
-# Mark source positions
-for sx, sy in sources:
-    plt.plot(sx, sy, 'ko')
-
-plt.title(f"Interference Pattern from {N}-sided Polygon Sources")
-plt.xlabel("x")
-plt.ylabel("y")
-plt.axis('equal')
-plt.grid(True, linestyle='--', alpha=0.5)
-plt.tight_layout()
-plt.show()
-```
-
----
-
 ## Observations
 - **Constructive Interference**: Regions where waves add (bright colors).
 - **Destructive Interference**: Regions where waves cancel (dark colors).
@@ -115,6 +50,67 @@ Try changing `N` to 3 (triangle), 4 (square), or more to explore different polyg
 
 ## Conclusion
 This simulation shows how coherent sources produce rich interference patterns. The configuration of the sources determines the spatial frequency and symmetry of the interference. Such analyses are useful in acoustics, optics, and wave physics in general.
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Dalga parametreleri
+A = 1.0
+wavelength = 1.0
+k = 2 * np.pi / wavelength
+omega = 2 * np.pi
+phi = 0
+t = 0.0
+
+# Grid tanımı
+x = np.linspace(-5, 5, 500)
+y = np.linspace(-5, 5, 500)
+X, Y = np.meshgrid(x, y)
+
+# Kaynakların yer alacağı dairenin yarıçapı
+radius = 2.0
+
+# Kaynakları üret
+def generate_sources(N):
+    if N == 1:
+        return [(0, 0)]  # Tek kaynak merkezde
+    elif N == 2:
+        return [(-radius / 2, 0), (radius / 2, 0)]  # İki kaynak yatay eksende
+    else:
+        raise ValueError("Bu sürüm sadece N=1 ve N=2 içindir.")
+
+# Girişim desenini çiz
+def plot_pattern(N):
+    sources = generate_sources(N)
+    Z = np.zeros_like(X)
+    for sx, sy in sources:
+        r = np.sqrt((X - sx)**2 + (Y - sy)**2)
+        Z += A * np.sin(k * r - omega * t + phi)
+
+    plt.figure(figsize=(6, 6))
+    plt.contourf(X, Y, Z, levels=100, cmap='seismic')
+
+    # Kaynakları siyah noktalarla çiz
+    for sx, sy in sources:
+        plt.plot(sx, sy, 'ko')
+
+    plt.title(f'{N} Noktalı Kaynak Girişimi')
+    plt.xlabel('x')
+    plt.ylabel('y')
+    plt.axis('equal')
+    plt.colorbar(label='Dalga Yer Değişimi')
+    plt.grid(True)
+    plt.show()
+
+# Yalnızca N = 1 ve N = 2 durumları için çizim
+for N in [1, 2]:
+    plot_pattern(N)
+```
+
+![alt text](image-4.png)
+
+![alt text](image-5.png)
 
 ```python
 import numpy as np
