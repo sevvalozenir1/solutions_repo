@@ -45,7 +45,39 @@ Series and Parallel Reduction:
 
 For series resistors, combine their resistances by adding them.
 
+```python
+def series_circuit(*resistances):
+    """
+    Calculate the equivalent resistance for resistors in series.
+    :param resistances: List of resistor values in series.
+    :return: Equivalent resistance
+    """
+    return sum(resistances)
+
+# Example for A-B-C in series
+resistance_series = series_circuit(5, 10)  # A–B: 5Ω, B–C: 10Ω
+print(f"Equivalent resistance for series circuit: {resistance_series} Ω")
+```
+Equivalent resistance for series circuit: 15 Ω
+
+
 For parallel resistors, use the parallel formula to compute the equivalent resistance.
+
+```python
+def parallel_circuit(*resistances):
+    """
+    Calculate the equivalent resistance for resistors in parallel.
+    :param resistances: List of resistor values in parallel.
+    :return: Equivalent resistance
+    """
+    inverse_sum = sum(1 / r for r in resistances)
+    return 1 / inverse_sum
+
+# Example for triangle circuit: A–B = 6Ω, A–C = 6Ω, B–C = 3Ω
+resistance_parallel = parallel_circuit(6, 6, 3)  # Resistors in parallel
+print(f"Equivalent resistance for parallel circuit: {resistance_parallel:.2f} Ω")
+```
+Equivalent resistance for parallel circuit: 1.50 Ω
 
 Graph Update:
 
