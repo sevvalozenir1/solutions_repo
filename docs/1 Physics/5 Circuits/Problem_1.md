@@ -396,3 +396,10 @@ Conclusion:
 Using graph theory to calculate equivalent resistance provides a structured, algorithmic way to analyze circuits. This approach can handle complex configurations, including nested series and parallel resistors, making it ideal for circuit analysis and simulation. The iterative graph simplification process ensures that the algorithm is scalable and efficient, even for large circuits.
 
 
+![alt text](image.png)
+
+![alt text](image-1.png)
+
+![alt text](image-2.png)
+
+[visit website](https://colab.research.google.com/drive/1TW5hqIsi-Ime9-jJ8fEO1DgXkV412pTJ?usp=sharing)
