@@ -172,6 +172,103 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-1">Problem 1</h1>
+<h1 id="exploring-the-central-limit-theorem-through-simulations">📘 Exploring the Central Limit Theorem through Simulations</h1>
+<h2 id="motivation">🎯 Motivation</h2>
+<p>The <strong>Central Limit Theorem (CLT)</strong> is a fundamental theorem in probability and statistics. It states that the distribution of the sample mean approaches a <strong>normal distribution</strong> as the sample size increases, regardless of the shape of the original population distribution.</p>
+<p>This simulation project allows us to visually and computationally explore the CLT in action by drawing samples from different distributions and analyzing their sample means.</p>
+<hr/>
+<h2 id="tools-libraries">🧰 Tools &amp; Libraries</h2>
+<p>We will use the following Python libraries:</p>
+<ul>
+<li><code>numpy</code> for numerical computations</li>
+<li><code>matplotlib</code> and <code>seaborn</code> for visualization</li>
+<li><code>matplotlib.animation</code> for GIF generation</li>
+</ul>
+<hr/>
+<h2 id="1-generating-population-distributions">🔢 1. Generating Population Distributions</h2>
+<p>We simulate large populations from:
+- <strong>Uniform Distribution</strong>: Equal probability over a range
+- <strong>Exponential Distribution</strong>: Skewed distribution
+- <strong>Binomial Distribution</strong>: Discrete distribution</p>
+<hr/>
+<h2 id="2-sampling-and-visualization">🔄 2. Sampling and Visualization</h2>
+<p>We repeatedly sample from each population, compute the sample means, and visualize the resulting sampling distribution for increasing sample sizes (5, 10, 30, 50). This allows us to observe how the distribution of the mean converges to normality.</p>
+<hr/>
+<h2 id="3-parameter-exploration">🔬 3. Parameter Exploration</h2>
+<p>We also explore how sample size affects:
+- The shape of the sampling distribution
+- The variance (spread) of the sample means</p>
+<hr/>
+<h2 id="4-practical-applications">🏭 4. Practical Applications</h2>
+<p>The CLT underpins many statistical methods and real-world applications:
+- <strong>Estimation of population parameters</strong>
+- <strong>Quality control in manufacturing</strong>
+- <strong>Financial modeling and forecasting</strong></p>
+<hr/>
+<h2 id="visual-results">📈 Visual Results</h2>
+<p>Each distribution is visualized across different sample sizes. Histograms show the shift towards a bell-shaped normal distribution as the sample size increases.</p>
+<hr/>
+<h2 id="bonus-animation-gif">🎞️ Bonus: Animation (GIF)</h2>
+<p>We also create animations to dynamically show how increasing the sample size causes the sample mean distribution to become more normally distributed.</p>
+<hr/>
+<h2 id="summary">✅ Summary</h2>
+<table>
+<thead>
+<tr>
+<th>Distribution</th>
+<th>Skewness</th>
+<th>Convergence Speed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Uniform</td>
+<td>None</td>
+<td>Fast</td>
+</tr>
+<tr>
+<td>Exponential</td>
+<td>High</td>
+<td>Moderate</td>
+</tr>
+<tr>
+<td>Binomial</td>
+<td>Low</td>
+<td>Fast</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="deliverables">💾 Deliverables</h2>
+<ul>
+<li>Python scripts for simulations</li>
+<li>Plots for sampling distributions</li>
+<li>Animated GIFs</li>
+<li>Markdown and notebook documentation</li>
+</ul>
+<pre><code class="language-python">sample_sizes = [5, 10, 30, 50]
+distributions = {
+    'Uniform': pop_uniform,
+    'Exponential': pop_exponential,
+    'Binomial': pop_binomial
+}
+
+for name, pop in distributions.items():
+    plt.figure(figsize=(14, 8))
+    for i, size in enumerate(sample_sizes):
+        means = sample_means(pop, size)
+        plt.subplot(2, 2, i+1)
+        sns.histplot(means, kde=True, bins=30, color="skyblue")
+        plt.title(f"{name} Distribution - Sample Size {size}")
+        plt.xlabel("Sample Mean")
+        plt.ylabel("Frequency")
+    plt.suptitle(f"Sampling Distribution of Sample Mean for {name} Population", fontsize=16)
+    plt.tight_layout(rect=[0, 0, 1, 0.96])
+    plt.savefig(f"{name}_CLT_Plot.png")  # Save as picture
+    plt.show()
+</code></pre>
+<p><img alt="alt text" src="../image.png"/></p>
+<p><a href="https://colab.research.google.com/drive/1FCiVyj3Sk7q_5lIThnXdi-JJ-WPDeHiV?usp=sharing">visit web</a></p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
