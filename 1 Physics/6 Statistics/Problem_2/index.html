@@ -172,6 +172,164 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-2">Problem 2</h1>
+<h1 id="estimating-using-monte-carlo-methods">🧮 Estimating π Using Monte Carlo Methods</h1>
+<h2 id="motivation">🎯 Motivation</h2>
+<p>Monte Carlo methods are computational algorithms that rely on <strong>random sampling</strong> to estimate numerical results. One of the most famous applications is estimating the value of π through <strong>geometric probability</strong>. In this project, we explore two approaches:</p>
+<ul>
+<li><strong>Part 1</strong>: Estimating π by simulating points in a square with an inscribed circle.</li>
+<li><strong>Part 2</strong>: Estimating π using <strong>Buffon’s Needle</strong>—a classic problem in geometric probability.</li>
+</ul>
+<p>Both methods highlight how randomness can be used to derive estimates of constants and solve complex problems.</p>
+<hr/>
+<h2 id="part-1-estimating-using-a-circle">🟠 Part 1: Estimating π Using a Circle</h2>
+<h3 id="theoretical-foundation">📐 Theoretical Foundation</h3>
+<p>Consider a unit circle inscribed in a square of side length 2 (centered at origin, so radius = 1). The area of the square is:</p>
+<div class="arithmatex">\[
+A_{\text{square}} = (2)^2 = 4
+\]</div>
+<p>The area of the circle is:</p>
+<div class="arithmatex">\[
+A_{\text{circle}} = \pi r^2 = \pi (1)^2 = \pi
+\]</div>
+<p>The probability that a randomly chosen point in the square lies inside the circle is:</p>
+<div class="arithmatex">\[
+\frac{\text{Area of Circle}}{\text{Area of Square}} = \frac{\pi}{4} \Rightarrow \pi \approx 4 \cdot \frac{\text{points inside circle}}{\text{total points}}
+\]</div>
+<hr/>
+<h3 id="simulation-steps">🧪 Simulation Steps</h3>
+<ol>
+<li>Generate N random (x, y) points in the square [-1, 1] × [-1, 1].</li>
+<li>Count how many points fall inside the unit circle (i.e., </li>
+</ol>
+<div class="arithmatex">\[
+ x^2 + y^2 \leq 1 
+ \]</div>
+<ol>
+<li>Estimate π using the formula:</li>
+</ol>
+<div class="arithmatex">\[
+\pi \approx 4 \cdot \frac{\text{inside}}{\text{total points}}
+\]</div>
+<hr/>
+<h3 id="visualization">📊 Visualization</h3>
+<p>Plot the points:
+- Points <strong>inside</strong> the circle: blue.
+- Points <strong>outside</strong> the circle: red.
+- Also, draw the boundary of the circle.</p>
+<hr/>
+<h3 id="convergence-analysis">📈 Convergence Analysis</h3>
+<p>As the number of points increases, the estimate converges toward π. We can plot:</p>
+<ul>
+<li>Estimated value of π vs. number of iterations</li>
+<li>Error vs. iterations (e.g., </li>
+</ul>
+<p>$$
+ |\pi - \hat{\pi}| 
+ $$)</p>
+<hr/>
+<h2 id="part-2-estimating-using-buffons-needle">🧵 Part 2: Estimating π Using Buffon’s Needle</h2>
+<h3 id="theoretical-foundation_1">📐 Theoretical Foundation</h3>
+<p>In Buffon’s Needle experiment, a needle of length </p>
+<div class="arithmatex">\[
+ L 
+ \]</div>
+<p>is dropped on a floor with parallel lines spaced distance </p>
+<p>$$
+   D 
+   $$</p>
+<pre><code>apart (where
+
+$$
+ L \leq D 
+ $$
+
+ ). The probability
+
+ $$
+  P 
+  $$
+
+   that the needle crosses a line is:
+</code></pre>
+<div class="arithmatex">\[
+P = \frac{2L}{\pi D}
+\Rightarrow \pi \approx \frac{2L \cdot \text{trials}}{D \cdot \text{crosses}}
+\]</div>
+<hr/>
+<h3 id="simulation-steps_1">🧪 Simulation Steps</h3>
+<ol>
+<li>Drop a needle at a random angle and position:</li>
+<li>Random angle </li>
+</ol>
+<p>$$
+    \theta \in [0, \pi] 
+    $$</p>
+<ul>
+<li>Random center position between two lines</li>
+<li>Determine if the needle crosses a line using geometry.</li>
+<li>Estimate π from the observed frequency of crossings.</li>
+</ul>
+<hr/>
+<h3 id="visualization_1">🖼 Visualization</h3>
+<p>Graphically show:
+- Horizontal parallel lines
+- Needle positions (crossing lines vs not crossing lines)</p>
+<hr/>
+<h3 id="convergence-and-comparison">📈 Convergence and Comparison</h3>
+<ul>
+<li>Plot π estimates vs number of trials</li>
+<li>Compare convergence rate to the circle-based method</li>
+<li>Discuss stability and variance in estimates</li>
+</ul>
+<hr/>
+<h2 id="analysis-and-discussion">🔬 Analysis and Discussion</h2>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Convergence Speed</th>
+<th>Accuracy</th>
+<th>Simplicity</th>
+<th>Visual Appeal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Circle-Based</td>
+<td>Fast</td>
+<td>High</td>
+<td>Simple</td>
+<td>High</td>
+</tr>
+<tr>
+<td>Buffon’s Needle</td>
+<td>Slower</td>
+<td>Moderate</td>
+<td>Tricky</td>
+<td>Moderate</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Circle method</strong> is faster and more intuitive, but less “physical.”</li>
+<li><strong>Buffon’s Needle</strong> is historically significant and conceptually rich, but has higher variance.</li>
+</ul>
+<hr/>
+<h2 id="deliverables">📁 Deliverables</h2>
+<ul>
+<li>Python code for both simulations</li>
+<li>Plots showing estimated π and convergence</li>
+<li>Animated or static visualizations of random points and needles</li>
+<li>A comparative analysis of both methods</li>
+</ul>
+<hr/>
+<h2 id="resources">📚 Resources</h2>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Monte_Carlo_method">Wikipedia - Monte Carlo Method</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Buffon%27s_needle">Wikipedia - Buffon's Needle</a></li>
+<li>Think Stats by Allen B. Downey</li>
+</ul>
+<p><a href="https://colab.research.google.com/drive/19V3WtC19b258Bnnpy-amlo8_d3M3FIYf?usp=sharing">visit web</a></p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
