@@ -1,321 +1,220 @@
-# Problem 1
+# 🌍 Measuring Earth's Gravitational Acceleration Using a Pendulum
 
-# Measuring Earth's Gravitational Acceleration Using a Pendulum
-
----
-
-## 1. Motivation
-
-The acceleration due to gravity, 
- 
- $$
- g 
- $$
- 
- , is a fundamental physical constant that affects many natural phenomena and engineering applications. A classic, accessible way to measure 
- 
- $$
-  g 
-  $$
-  
-   is by timing the oscillations of a simple pendulum. This experiment also offers a practical exercise in measurement uncertainty and data analysis.
+## 🧭 1. Motivation
+The acceleration due to gravity, **g**, is a fundamental constant in physics. It affects phenomena ranging from free fall to planetary orbits. A simple pendulum provides an accessible and effective method for estimating **g**. This experiment also introduces uncertainty analysis — an essential aspect of scientific measurements.
 
 ---
 
-## 2. Materials
-
-- A string (length ~1 or 1.5 meters)
-- Small weight (e.g., keychain, bag of coins)
-- Stopwatch or smartphone timer
-- Ruler or measuring tape
-
----
-
-## 3. Experimental Setup
-
-- Attach the weight securely to one end of the string.
-- Fix the other end of the string to a sturdy support so the pendulum can swing freely.
-- Measure the length of the pendulum 
-
-$$
- L 
- $$
- 
-  from the suspension point to the center of the mass.
-- Note the resolution of the measuring tool (e.g., 1 mm for a ruler). The uncertainty in 
-
-$$
- L 
- $$
- 
-  is half the resolution:
-
-$$
-u_L = \frac{\text{resolution}}{2}
-$$
+## 🧪 2. Materials
+- A string (~1.14 meters)
+- USB power adapter (pendulum bob)
+- Smartphone stopwatch
+- Ruler or measuring tape (±1 mm resolution)
 
 ---
 
-## 4. Data Collection
+## ⚙️ 3. Experimental Setup
+- A small initial angle (<15°) ensured simple harmonic motion.
+- Pendulum length **L** was measured from the suspension point to the center of mass of the bob:
+  - **L = 1.140 m**, **u<sub>L</sub> = ±0.001 m**
+- Ten independent measurements of the time for **10 complete oscillations** were recorded.
 
-- Displace the pendulum by a small angle (< 15°) to ensure simple harmonic motion.
-- Release and use the stopwatch to measure the time for **10 full oscillations**.
-- Repeat this measurement 10 times and record the values 
+```python
+# 🔧 Import necessary libraries
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
 
-$$
- T_{10,i} 
- $$.
+# 📐 Physical Constants
+g = 9.81         # gravitational acceleration (m/s²)
+L = 1.14         # length of the pendulum (meters)
+theta0 = np.radians(10)  # initial angle in radians (10 degrees)
 
----
+# ⏱️ Time setup
+T = 2 * np.pi * np.sqrt(L / g)      # theoretical period
+t_max = 2 * T                       # simulate for two full periods
+fps = 60                            # frames per second
+dt = 1 / fps                        # time step
+t = np.arange(0, t_max, dt)        # time array
 
-## 5. Data Processing
+# 🌀 Small angle approximation: θ(t) = θ₀ cos(√(g/L) t)
+theta = theta0 * np.cos(np.sqrt(g / L) * t)
 
-### 5.1 Calculate Mean and Uncertainty of the Time for 10 Oscillations
+# 📍 Convert to Cartesian coordinates
+x = L * np.sin(theta)
+y = -L * np.cos(theta)
 
-- Mean time for 10 oscillations:
+# 🎬 Create the animation
+fig, ax = plt.subplots(figsize=(6, 6))
+ax.set_xlim(-L - 0.2, L + 0.2)
+ax.set_ylim(-L - 0.2, 0.2)
+ax.set_aspect('equal')
+ax.grid()
 
-$$
-\bar{T}_{10} = \frac{1}{n} \sum_{i=1}^n T_{10,i}
-$$
+# Draw pendulum components
+line, = ax.plot([], [], 'o-', lw=2, color='blue')    # rod + bob
+trace, = ax.plot([], [], 'r--', lw=1, alpha=0.5)      # trace of motion
+trace_x, trace_y = [], []
 
-- Standard deviation of the 10 measurements:
+# 🖼️ Initialize function for animation
+def init():
+    line.set_data([], [])
+    trace.set_data([], [])
+    return line, trace
 
-$$
-s = \sqrt{\frac{1}{n-1} \sum_{i=1}^n (T_{10,i} - \bar{T}_{10})^2}
-$$
-
-- Uncertainty in the mean time:
-
-$$
-u_{\bar{T}_{10}} = \frac{s}{\sqrt{n}}
-$$
-
----
-
-### 5.2 Calculate the Period 
-
-$$
- T
- $$
-
- and Its Uncertainty
-
-- Period (time for one oscillation):
-
-$$
-T = \frac{\bar{T}_{10}}{10}
-$$
-
-- Uncertainty in period:
-
-$$
-u_T = \frac{u_{\bar{T}_{10}}}{10}
-$$
-
----
-
-### 5.3 Calculate Gravitational Acceleration 
-
-$$
- g 
- $$
-
-Using the formula for a simple pendulum (small angle approximation):
-
-$$
-T = 2\pi \sqrt{\frac{L}{g}} \implies g = \frac{4\pi^2 L}{T^2}
-$$
-
----
-
-### 5.4 Propagate Uncertainties to 
-
-$$
- g 
- $$
-
-Given uncertainties in 
-
-$$
- L 
- $$ 
- 
-  and 
-  
-  $$
-   T 
-   $$
-   
-   , uncertainty in 
-   
-   $$
-    g 
-    $$
+# 🧩 Animation function
+def update(frame):
+    this_x = [0, x[frame]]
+    this_y = [0, y[frame]]
+    line.set_data(this_x, this_y)
     
+    trace_x.append(x[frame])
+    trace_y.append(y[frame])
+    trace.set_data(trace_x, trace_y)
+    
+    return line, trace
 
-     
- $$  
-     u_g = g \sqrt{ \left(\frac{u_L}{L}\right)^2 + \left(2 \frac{u_T}{T}\right)^2 }
+# 🎞️ Run the animation
+ani = FuncAnimation(fig, update, frames=len(t),
+                    init_func=init, blit=True, interval=1000*dt)
+
+# 🎥 Display in notebook
+from IPython.display import HTML
+HTML(ani.to_jshtml())
+```
+![alt text](image-3.png)
+
+
+---
+
+## 📊 4. Data Collection
+
+### 4.1 Raw Time Measurements (10 Oscillations)
+
+| Trial | Time (s) |
+|-------|----------|
+| 1     | 18.05    |
+| 2     | 17.65    |
+| 3     | 18.12    |
+| 4     | 17.92    |
+| 5     | 17.98    |
+| 6     | 18.01    |
+| 7     | 17.83    |
+| 8     | 18.00    |
+| 9     | 17.91    |
+| 10    | 18.07    |
+
+---
+
+## 🧮 5. Data Analysis
+
+### 5.1 Mean and Standard Deviation
+
+$$
+\bar{T}_{10} = 17.954 \, \text{s}, \quad s = 0.136 \, \text{s}
+$$
+
+Uncertainty in the mean:
+
+$$
+u_{\bar{T}_{10}} = \frac{0.136}{\sqrt{10}} = 0.043 \, \text{s}
+$$
+
+### 5.2 Period of One Oscillation
+
+$$
+T = \frac{\bar{T}_{10}}{10} = 1.7954 \, \text{s}, \quad u_T = \frac{0.043}{10} = 0.0043 \, \text{s}
 $$
 
 ---
 
-## 6. Tabulated Data
+## 🌍 6. Estimating Gravitational Acceleration
 
-| Measurement                      | Value                | Uncertainty           |
-|---------------------------------|----------------------|-----------------------|
-| Length \( L \) (m)              |                      | 
+Using the pendulum formula:
 
 $$
-u_L = \frac{\text{resolution}}{2} 
-$$ |
-
-| Mean time for 10 oscillations 
-
-$$
-\bar{T}_{10} 
+g = \frac{4\pi^2 L}{T^2}
 $$
 
-(s) |                      |                       |
-| Standard deviation 
+Substituting values:
 
 $$
-s 
+g = \frac{4\pi^2 \cdot 1.14}{(1.7954)^2} = 13.962 \, \text{m/s}^2
 $$
 
-(s)  |                      |                       |
-| Uncertainty in mean 
+### 6.1 Propagating Uncertainty
 
 $$
-u_{\bar{T}_{10}} 
+u_g = g \cdot \sqrt{\left(\frac{u_L}{L}\right)^2 + \left(2 \cdot \frac{u_T}{T}\right)^2}
 $$
 
-(s)      |                      |                       |
-| Period 
-
 $$
-T = \frac{\bar{T}_{10}}{10} 
+u_g = 13.962 \cdot \sqrt{\left(\frac{0.001}{1.14}\right)^2 + \left(2 \cdot \frac{0.0043}{1.7954}\right)^2} = 0.068 \, \text{m/s}^2
 $$
-
-(s)       |                      |                       |
-| Uncertainty in period
-
-$$
- u_T 
- $$
- 
-  (s)                 |                      |                       |
-| Calculated gravity 
-
-$$
- g 
- $$
- 
-  (m/s²)                    |                      |                       |
-| Uncertainty in 
-
-$$
- g 
- $$
- 
- , 
- 
- $$
-  u_g 
-  $$
-  
-   (m/s²)            |                      |                       |
 
 ---
 
-## 7. Discussion and Analysis
+## 📋 7. Results Summary
 
-### 7.1 Comparison with Standard Value
+| Quantity | Value    | Uncertainty | Units   |
+|----------|----------|-------------|---------|
+| Length (L) | 1.140  | ±0.001      | m       |
+| Period (T) | 1.7954 | ±0.0043     | s       |
+| Gravity (g) | 13.962 | ±0.068     | m/s²    |
 
-The standard acceleration due to gravity at sea level is:
+---
+
+## 📈 8. Visual Data Representation
+
+> *(Note: The following are suggested visuals to include in your report or notebook.)*
+
+- Histogram of 10-oscillation times
+- Time vs. trial number plot
+- Comparison bar chart between experimental and standard **g**
+
+---
+
+## 🔍 9. Discussion
+
+### 9.1 Comparison with Standard Value
+
+The standard gravitational acceleration at sea level is:
 
 $$
 g_0 = 9.80665 \, \text{m/s}^2
 $$
 
-Compare your calculated 
+Our measured value (**13.962 m/s²**) significantly exceeds this and lies well outside the uncertainty range, suggesting **systematic error**.
 
-$$
- g 
- $$
- 
-  and uncertainty 
-  
- $$
- u_g 
-$$
-   
-    with this value. Does it lie within your uncertainty range?
+### 9.2 Sources of Uncertainty and Error
 
----
+| Source                 | Effect                                  |
+|------------------------|-----------------------------------------|
+| Manual timing          | Human reaction time introduces bias     |
+| Length measurement     | Small errors significantly affect result |
+| Large swing angle      | Violates small-angle assumption          |
+| Non-vertical swing     | Introduces complexity and error         |
 
-### 7.2 Sources of Uncertainty
+### 9.3 How to Improve the Experiment
 
-- **Measurement resolution:** The ruler's smallest division limits how precisely 
-
-$$
-L 
-$$
-
-is known.
-- **Timing variability:** Human reaction time impacts start/stop accuracy on the stopwatch.
-- **Assumptions:**
-  - Small angle approximation (< 15°) ensures the formula for 
-  
-  $$
-  T 
-  $$
-  
-   is valid.
-  - Air resistance and friction at the pivot are neglected.
-- **Experimental limitations:**
-  - Pendulum string not perfectly rigid or fixed.
-  - Oscillations not perfectly planar.
+- Use **photogate timers** for accurate timing
+- Measure length precisely with **calipers** or **laser tools**
+- Keep oscillations under **10°** for harmonic motion
+- Increase number of trials and average over larger datasets
 
 ---
 
-### 7.3 Effect on Results
+## ✅ 10. Conclusion
 
-- Increasing the number of oscillations timed per trial reduces relative timing uncertainty.
-- Repeating multiple trials improves confidence by reducing uncertainty in mean time.
-- Improving length measurement precision decreases 
-
-$$
- u_L 
- $$
- 
- , improving 
- 
- $$
-  u_g 
-  $$
-  
-  .
+Although simple, this experiment highlights the importance of **precision** and **error analysis**. The discrepancy between measured and expected values underlines the impact of small measurement mistakes. Nevertheless, this process provides valuable insight into how theory and practice meet in experimental physics.
 
 ---
 
-## 8. Conclusion
+## 📚 11. References
 
-The pendulum method provides a reliable estimate of gravitational acceleration 
-
-$$
- g 
- $$
- 
- , illustrating how careful measurement and uncertainty analysis are essential in experimental physics. The dominant uncertainty typically arises from timing measurements, but improving length measurements and repeating trials can yield more precise results.
-
----
-
-## 9. References
-
-- Serway, R. A., & Jewett, J. W. (2014). *Physics for Scientists and Engineers*. Cengage Learning.
-- Taylor, J. R. (1997). *An Introduction to Error Analysis*. University Science Books.
-
+- Serway, R. A., & Jewett, J. W. (2014). *Physics for Scientists and Engineers*.
+- Taylor, J. R. (1997). *An Introduction to Error Analysis*.
+- OpenAI ChatGPT Experimental Lab (2025)
 
 ```python
 # 1. Import libraries
@@ -374,13 +273,12 @@ plt.title('Measured Gravitational Acceleration')
 plt.legend()
 plt.grid(True)
 plt.show()
-
 ```
 
-![alt text](image.png)
+![alt text](image-4.png)
 
-![alt text](image-1.png)
+![alt text](image-5.png)
 
-![alt text](image-2.png)
+![alt text](image-6.png)
 
 [visit web](https://colab.research.google.com/drive/1VxXZOgqgdD_EpzsYHOODF66vrWvYEJ0F?usp=sharing)
