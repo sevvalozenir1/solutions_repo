@@ -352,6 +352,13 @@ P = \frac{2L}{\pi D}
 </ul>
 <hr/>
 <h1 id="appendix-python-code-examples">Appendix: Python Code Examples</h1>
+<pre><code class="language-python">def estimate_pi_circle(num_points):
+    x = np.random.uniform(-1, 1, num_points)
+    y = np.random.uniform(-1, 1, num_points)
+    inside = x**2 + y**2 &lt;= 1
+    pi_estimate = 4 * np.sum(inside) / num_points
+    return pi_estimate
+</code></pre>
 <pre><code class="language-python">import numpy as np
 import matplotlib.pyplot as plt
 </code></pre>
