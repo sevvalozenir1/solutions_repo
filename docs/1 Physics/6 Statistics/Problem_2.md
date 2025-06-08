@@ -166,9 +166,19 @@ $$
 # Appendix: Python Code Examples
 
 ```python
+def estimate_pi_circle(num_points):
+    x = np.random.uniform(-1, 1, num_points)
+    y = np.random.uniform(-1, 1, num_points)
+    inside = x**2 + y**2 <= 1
+    pi_estimate = 4 * np.sum(inside) / num_points
+    return pi_estimate
+```
+
+```python
 import numpy as np
 import matplotlib.pyplot as plt
 ```
+
 # Part 1: Circle Method
 
 ```python
