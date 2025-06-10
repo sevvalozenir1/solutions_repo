@@ -271,6 +271,47 @@ def generate_sample_means(population, sample_sizes, num_samples=1000):
         results[n] = sample_means(population, n, num_samples)
     return results
 ```
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Set random seed for reproducibility
+np.random.seed(42)
+
+# Generate a large binomial population
+N = 100_000
+n_trials = 10  # number of trials per binomial experiment
+p_success = 0.5  # probability of success
+binomial_pop = np.random.binomial(n=n_trials, p=p_success, size=N)
+
+# Function to generate sample means
+def sample_means(population, sample_size, num_samples=1000):
+    means = [np.mean(np.random.choice(population, size=sample_size, replace=False)) for _ in range(num_samples)]
+    return means
+
+# Sample sizes to explore
+sample_sizes = [5, 10, 30, 50]
+
+# Plot sampling distributions of the sample mean for each sample size
+plt.figure(figsize=(16, 10))
+
+for i, size in enumerate(sample_sizes, 1):
+    means = sample_means(binomial_pop, size)
+    plt.subplot(2, 2, i)
+    sns.histplot(means, bins=30, kde=True, color="red")
+    plt.title(f"Binomial Distribution - Sample Size {size}")
+    plt.xlabel("Sample Mean")
+    plt.ylabel("Frequency")
+
+plt.suptitle("Sampling Distribution of Sample Means from Binomial Population", fontsize=18)
+plt.tight_layout(rect=[0, 0, 1, 0.95])
+plt.show()
+```
+
+![alt text](image-15.png)
+
 ---
 
 ## ✅ Summary
