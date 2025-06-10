@@ -403,4 +403,10 @@ HTML(ani.to_jshtml())
 
 ![alt text](image-11.png)
 
+
+![alt text](image-12.png)
+
+I did this experiment with my necklace, and it took 10 seconds to complete 10 periods.  
+To measure this, I used the stopwatch on my other phone.
+
 [visit web](https://colab.research.google.com/drive/1VxXZOgqgdD_EpzsYHOODF66vrWvYEJ0F?usp=sharing)
