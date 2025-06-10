@@ -406,15 +406,14 @@ HTML(ani.to_jshtml())
 
 ![alt text](image-12.png)
 
-| Parameter                             | Value         | Uncertainty   | Unit   | Notes                                  |
-|-------------------------------------|---------------|---------------|--------|---------------------------------------|
-| Pendulum length, $L$                | 0.30          | ±0.005        | m      | Estimated length of necklace           |
-| Times for 10 oscillations (5 trials) | 10.3, 10.0, 10.4, 10.8, 10.2 | -             | s      | Measured data                         |
-| Mean time for 10 oscillations, $\bar{t}_{10}$ | 10.34         | ±0.13         | s      | Average of 5 measurements              |
-| Period, $T = \frac{\bar{t}_{10}}{10}$             | 1.034         | ±0.013        | s      | Calculated from mean time              |
-| Calculated gravitational acceleration, $g$        | 11.08         | ±0.34         | m/s²   | Using $g = \frac{4 \pi^2 L}{T^2}$   |
-| Standard gravitational acceleration, $g_0$         | 9.81          | -             | m/s²   | Accepted theoretical value             |
-| Difference $(g - g_0$)                             | 1.27          | -             | m/s²   | Experimental $g$ higher than $g_0$ |
+| Trial | Time for 10 Oscillations (s) | Period T (s) | Calculated g (m/s²) | Standard g (m/s²) | Difference (g - g₀) (m/s²) |
+|-------|-------------------------------|--------------|----------------------|--------------------|-----------------------------|
+| 1     | 10.3                          | 1.030        | 11.20                | 9.81               | +1.39                       |
+| 2     | 10.0                          | 1.000        | 11.84                | 9.81               | +2.03                       |
+| 3     | 10.4                          | 1.040        | 11.04                | 9.81               | +1.23                       |
+| 4     | 10.8                          | 1.080        | 10.14                | 9.81               | +0.33                       |
+| 5     | 10.2                          | 1.020        | 11.36                | 9.81               | +1.55                       |
+
 
 
 
