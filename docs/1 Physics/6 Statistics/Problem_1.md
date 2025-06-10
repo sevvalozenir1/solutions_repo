@@ -272,6 +272,14 @@ def generate_sample_means(population, sample_sizes, num_samples=1000):
     return results
 ```
 
+# Binomial Distribution and the Central Limit Theorem
+
+The **Binomial Distribution** is a discrete probability distribution that models the number of successes in a fixed number of independent Bernoulli trials, each with the same probability of success \( p \).
+
+In the context of the **Central Limit Theorem (CLT)**, when we repeatedly sample from a binomial population and calculate the sample means, the distribution of these sample means tends to approximate a normal distribution as the sample size increases, regardless of the original distribution’s discrete nature.
+
+This phenomenon illustrates the power of the CLT, showing that even discrete distributions like the binomial can yield normally distributed sample means with sufficiently large samples.
+
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
