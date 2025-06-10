@@ -406,14 +406,16 @@ HTML(ani.to_jshtml())
 
 ![alt text](image-12.png)
 
-| Parameter                   | Value              | Uncertainty         | Unit         | Notes                             |
-|----------------------------|--------------------|---------------------|--------------|----------------------------------|
-| Pendulum length, $L$       | 0.25               | ±0.005              | m            | Measured with ruler (0.01 m res) |
-| Time for 10 oscillations, $t_{10}$ | 10.00              | ±0.01               | s            | Stopwatch resolution             |
-| Period, $T = \frac{t_{10}}{10}$    | 1.00               | ±0.001              | s            | Calculated                      |
-| Calculated gravitational acceleration, $g$ | 9.87               | ±0.20               | m/s²         | Using formula $g = \frac{4\pi^2 L}{T^2}$ |
-| Standard gravitational acceleration, $g_0$  | 9.81               | -                   | m/s²         | Reference value                 |
-| Difference $(g - g_0$)              | 0.06               | -                   | m/s²         | Within uncertainty              |
+| Parameter                             | Value         | Uncertainty   | Unit   | Notes                                  |
+|-------------------------------------|---------------|---------------|--------|---------------------------------------|
+| Pendulum length, $L$                | 0.30          | ±0.005        | m      | Estimated length of necklace           |
+| Times for 10 oscillations (5 trials) | 10.3, 10.0, 10.4, 10.8, 10.2 | -             | s      | Measured data                         |
+| Mean time for 10 oscillations, $\bar{t}_{10}$ | 10.34         | ±0.13         | s      | Average of 5 measurements              |
+| Period, $T = \frac{\bar{t}_{10}}{10}$             | 1.034         | ±0.013        | s      | Calculated from mean time              |
+| Calculated gravitational acceleration, $g$        | 11.08         | ±0.34         | m/s²   | Using $g = \frac{4 \pi^2 L}{T^2}$   |
+| Standard gravitational acceleration, $g_0$         | 9.81          | -             | m/s²   | Accepted theoretical value             |
+| Difference $(g - g_0$)                             | 1.27          | -             | m/s²   | Experimental $g$ higher than $g_0$ |
+
 
 
 [visit web](https://colab.research.google.com/drive/1VxXZOgqgdD_EpzsYHOODF66vrWvYEJ0F?usp=sharing)
