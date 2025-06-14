@@ -1,6 +1,21 @@
 # Problem 2: Estimating π Using Monte Carlo Methods
 
 ---
+# 📐 What is π (Pi)?
+
+π (pi) is a fundamental mathematical constant defined as the **ratio of a circle's circumference to its diameter**: π = Circumference / Diameter
+
+Its approximate value is:π ≈ 3.14159...
+
+
+- π is **irrational**: its decimal representation never terminates or repeats.
+- π is **transcendental**: it is not the root of any non-zero polynomial equation with rational coefficients.
+
+---
+
+🎯 Motivation
+Monte Carlo methods use random sampling...
+
 
 ## 🎯 Motivation
 
