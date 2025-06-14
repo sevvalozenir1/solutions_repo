@@ -649,60 +649,107 @@ HTML(ani.to_jshtml())
 <p><img alt="alt text" src="../image-10.png"/></p>
 <p><img alt="alt text" src="../image-11.png"/></p>
 <p><img alt="alt text" src="../image-12.png"/></p>
+<h1 id="measuring-gravitational-acceleration-with-a-pendulum">🧪 Measuring Gravitational Acceleration with a Pendulum</h1>
+<h2 id="data-collection">📊 Data Collection</h2>
+<ul>
+<li><strong>Estimated Length (L):</strong> 0.30 m  </li>
+<li><strong>Uncertainty (ΔL):</strong> 0.005 m  </li>
+</ul>
+<p><strong>Time measurements for 10 full oscillations (in seconds):</strong><br/>
+10.3, 10.0, 10.4, 10.8, 10.2</p>
+<hr/>
+<h2 id="calculations">🧮 Calculations</h2>
+<h3 id="step-1-mean-time-t_10">Step 1: Mean Time $ T_{10} $</h3>
+<div class="arithmatex">\[
+T_{10} = \frac{1}{5} \sum_{i=1}^{5} T_{10,i} = \frac{10.3 + 10.0 + 10.4 + 10.8 + 10.2}{5} = 10.34 \, \text{s}
+\]</div>
+<hr/>
+<h3 id="step-2-standard-deviation-sigma_t">Step 2: Standard Deviation $ \sigma_T $</h3>
+<div class="arithmatex">\[
+\sigma_T = \sqrt{\frac{1}{n - 1} \sum_{i=1}^{n} (T_{10,i} - \overline{T}_{10})^2} = 0.2828 \, \text{s}
+\]</div>
+<hr/>
+<h3 id="step-3-uncertainty-in-the-mean-delta-t_10">Step 3: Uncertainty in the Mean $ \Delta T_{10} $</h3>
+<div class="arithmatex">\[
+\Delta T_{10} = \frac{\sigma_T}{\sqrt{n}} = \frac{0.2828}{\sqrt{5}} = 0.1264 \, \text{s}
+\]</div>
+<hr/>
+<h3 id="step-4-period-of-one-oscillation">Step 4: Period of One Oscillation</h3>
+<div class="arithmatex">\[
+T = \frac{T_{10}}{10} = \frac{10.34}{10} = 1.034 \, \text{s}
+\]</div>
+<div class="arithmatex">\[
+\Delta T = \frac{\Delta T_{10}}{10} = \frac{0.1264}{10} = 0.01264 \, \text{s}
+\]</div>
+<hr/>
+<h3 id="step-5-calculated-gravitational-acceleration-g">Step 5: Calculated Gravitational Acceleration $ g $</h3>
+<div class="arithmatex">\[
+g = \frac{4 \pi^2 \cdot L}{T^2} = \frac{4 \cdot \pi^2 \cdot 0.30}{(1.034)^2} = \frac{11.84}{1.069} = 11.07 \, \text{m/s}^2
+\]</div>
+<hr/>
+<h3 id="step-6-uncertainty-in-g">Step 6: Uncertainty in $ g $</h3>
+<div class="arithmatex">\[
+\Delta g = g \cdot \sqrt{\left(\frac{\Delta L}{L}\right)^2 + \left(2 \cdot \frac{\Delta T}{T}\right)^2}
+\]</div>
+<div class="arithmatex">\[
+\Delta g = 11.07 \cdot \sqrt{\left(\frac{0.005}{0.30}\right)^2 + \left(2 \cdot \frac{0.01264}{1.034}\right)^2}
+= 11.07 \cdot 0.0298 = 0.33 \, \text{m/s}^2
+\]</div>
+<hr/>
+<h2 id="final-results">✅ Final Results</h2>
 <table>
 <thead>
 <tr>
-<th>Trial</th>
-<th>Time for 10 Oscillations (s)</th>
-<th>Period T (s)</th>
-<th>Calculated g (m/s²)</th>
-<th>Standard g (m/s²)</th>
-<th>Difference (g - g₀) (m/s²)</th>
+<th>Quantity</th>
+<th>Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>1</td>
-<td>10.3</td>
-<td>1.030</td>
-<td>11.20</td>
-<td>9.81</td>
-<td>+1.39</td>
+<td>Length (L)</td>
+<td>0.30 m</td>
 </tr>
 <tr>
-<td>2</td>
-<td>10.0</td>
-<td>1.000</td>
-<td>11.84</td>
-<td>9.81</td>
-<td>+2.03</td>
+<td>Uncertainty (ΔL)</td>
+<td>0.005 m</td>
 </tr>
 <tr>
-<td>3</td>
-<td>10.4</td>
-<td>1.040</td>
-<td>11.04</td>
-<td>9.81</td>
-<td>+1.23</td>
+<td>Mean Time (T₁₀)</td>
+<td>10.34 s</td>
 </tr>
 <tr>
-<td>4</td>
-<td>10.8</td>
-<td>1.080</td>
-<td>10.14</td>
-<td>9.81</td>
-<td>+0.33</td>
+<td>Std Deviation (σₜ)</td>
+<td>0.2828 s</td>
 </tr>
 <tr>
-<td>5</td>
-<td>10.2</td>
-<td>1.020</td>
-<td>11.36</td>
-<td>9.81</td>
-<td>+1.55</td>
+<td>Uncertainty in T₁₀</td>
+<td>0.1264 s</td>
+</tr>
+<tr>
+<td>Period (T)</td>
+<td>1.034 s</td>
+</tr>
+<tr>
+<td>Uncertainty in T</td>
+<td>0.01264 s</td>
+</tr>
+<tr>
+<td>Calculated g</td>
+<td>11.07 m/s²</td>
+</tr>
+<tr>
+<td>Uncertainty (Δg)</td>
+<td>0.33 m/s²</td>
 </tr>
 </tbody>
 </table>
+<hr/>
+<h2 id="notes">📌 Notes</h2>
+<ul>
+<li>The result is slightly above the standard gravity $ g_0 = 9.81 \, \text{m/s}^2 $.</li>
+<li>Measurement uncertainty and timing imprecision (human reaction time) likely contributed to this deviation.</li>
+<li>Keeping the angle &lt;15° ensured the validity of the simple pendulum model.</li>
+</ul>
 <p><a href="https://colab.research.google.com/drive/1VxXZOgqgdD_EpzsYHOODF66vrWvYEJ0F?usp=sharing">visit web</a></p>
 </div>
 </div><footer>
