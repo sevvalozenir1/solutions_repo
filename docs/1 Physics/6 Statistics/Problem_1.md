@@ -60,7 +60,31 @@ plt.show()
 
 ## 🔄 2. Sampling and Visualization
 
-We repeatedly sample from each population, compute the sample means, and visualize the resulting sampling distribution for increasing sample sizes (5, 10, 30, 50). This allows us to observe how the distribution of the mean converges to normality.
+The plots illustrate the sampling distribution of the sample mean for three different population distributions: Uniform, Exponential, and Binomial. For each population distribution, sample means were computed using different sample sizes: 5, 10, 30, and 50.
+
+Key Points:
+Distributions: The populations used are Uniform, Exponential, and Binomial.
+
+Sample Sizes: The sample means were calculated from samples of sizes 5, 10, 30, and 50.
+
+Sampling Distribution: Each subplot shows the distribution of sample means for a given sample size, based on repeated sampling from the population.
+
+Kernel Density Estimate (KDE): The smooth curve over each histogram represents the estimated probability density function of the sample means.
+
+Central Limit Theorem (CLT): As the sample size increases, the distribution of the sample mean becomes more approximately normal, regardless of the shape of the original population distribution.
+
+Observations:
+
+For small sample sizes (e.g., 5), the sampling distribution may resemble the population distribution.
+
+As the sample size increases (e.g., 30 or 50), the sampling distribution approaches a bell-shaped curve.
+
+This effect is more pronounced in the Exponential and Binomial distributions, which are initially skewed or discrete, respectively.
+
+Conclusion:
+These plots demonstrate the Central Limit Theorem in action: no matter the original population distribution, the sampling distribution of the sample mean tends toward a normal distribution as sample size grows.
+
+
 
 ```python
 plt.title(f"{dist_name} — Sample Size {sample_size}", fontsize=12)

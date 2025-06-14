@@ -406,13 +406,100 @@ HTML(ani.to_jshtml())
 
 ![alt text](image-12.png)
 
-| Trial | Time for 10 Oscillations (s) | Period T (s) | Calculated g (m/s²) | Standard g (m/s²) | Difference (g - g₀) (m/s²) |
-|-------|-------------------------------|--------------|----------------------|--------------------|-----------------------------|
-| 1     | 10.3                          | 1.030        | 11.20                | 9.81               | +1.39                       |
-| 2     | 10.0                          | 1.000        | 11.84                | 9.81               | +2.03                       |
-| 3     | 10.4                          | 1.040        | 11.04                | 9.81               | +1.23                       |
-| 4     | 10.8                          | 1.080        | 10.14                | 9.81               | +0.33                       |
-| 5     | 10.2                          | 1.020        | 11.36                | 9.81               | +1.55                       |
+# 🧪 Measuring Gravitational Acceleration with a Pendulum
+
+## 📊 Data Collection
+
+- **Estimated Length (L):** 0.30 m  
+- **Uncertainty (ΔL):** 0.005 m  
+
+**Time measurements for 10 full oscillations (in seconds):**  
+10.3, 10.0, 10.4, 10.8, 10.2
+
+---
+
+## 🧮 Calculations
+
+### Step 1: Mean Time $ T_{10} $
+
+$$
+T_{10} = \frac{1}{5} \sum_{i=1}^{5} T_{10,i} = \frac{10.3 + 10.0 + 10.4 + 10.8 + 10.2}{5} = 10.34 \, \text{s}
+$$
+
+---
+
+### Step 2: Standard Deviation $ \sigma_T $
+
+$$
+\sigma_T = \sqrt{\frac{1}{n - 1} \sum_{i=1}^{n} (T_{10,i} - \overline{T}_{10})^2} = 0.2828 \, \text{s}
+$$
+
+---
+
+### Step 3: Uncertainty in the Mean $ \Delta T_{10} $
+
+$$
+\Delta T_{10} = \frac{\sigma_T}{\sqrt{n}} = \frac{0.2828}{\sqrt{5}} = 0.1264 \, \text{s}
+$$
+
+---
+
+### Step 4: Period of One Oscillation
+
+$$
+T = \frac{T_{10}}{10} = \frac{10.34}{10} = 1.034 \, \text{s}
+$$
+
+$$
+\Delta T = \frac{\Delta T_{10}}{10} = \frac{0.1264}{10} = 0.01264 \, \text{s}
+$$
+
+---
+
+### Step 5: Calculated Gravitational Acceleration $ g $
+
+$$
+g = \frac{4 \pi^2 \cdot L}{T^2} = \frac{4 \cdot \pi^2 \cdot 0.30}{(1.034)^2} = \frac{11.84}{1.069} = 11.07 \, \text{m/s}^2
+$$
+
+---
+
+### Step 6: Uncertainty in $ g $
+
+$$
+\Delta g = g \cdot \sqrt{\left(\frac{\Delta L}{L}\right)^2 + \left(2 \cdot \frac{\Delta T}{T}\right)^2}
+$$
+
+$$
+\Delta g = 11.07 \cdot \sqrt{\left(\frac{0.005}{0.30}\right)^2 + \left(2 \cdot \frac{0.01264}{1.034}\right)^2}
+= 11.07 \cdot 0.0298 = 0.33 \, \text{m/s}^2
+$$
+
+---
+
+## ✅ Final Results
+
+| Quantity              | Value         |
+|-----------------------|---------------|
+| Length (L)            | 0.30 m        |
+| Uncertainty (ΔL)      | 0.005 m       |
+| Mean Time (T₁₀)       | 10.34 s       |
+| Std Deviation (σₜ)    | 0.2828 s      |
+| Uncertainty in T₁₀    | 0.1264 s      |
+| Period (T)            | 1.034 s       |
+| Uncertainty in T      | 0.01264 s     |
+| Calculated g          | 11.07 m/s²    |
+| Uncertainty (Δg)      | 0.33 m/s²     |
+
+---
+
+## 📌 Notes
+
+- The result is slightly above the standard gravity $ g_0 = 9.81 \, \text{m/s}^2 $.
+- Measurement uncertainty and timing imprecision (human reaction time) likely contributed to this deviation.
+- Keeping the angle <15° ensured the validity of the simple pendulum model.
+
+
 
 
 
