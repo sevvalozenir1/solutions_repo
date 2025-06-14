@@ -495,7 +495,7 @@ $$
 
 ## 📌 Notes
 
-- The result is slightly above the standard gravity $ g_0 = 9.81 \, \text{m/s}^2 $.
+- The result is slightly above the standard gravity $g_0 = 9.81 \, \text{m/s}^2$.
 - Measurement uncertainty and timing imprecision (human reaction time) likely contributed to this deviation.
 - Keeping the angle <15° ensured the validity of the simple pendulum model.
 
