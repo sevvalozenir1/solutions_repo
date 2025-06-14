@@ -420,7 +420,7 @@ HTML(ani.to_jshtml())
 
 ## 🧮 Calculations
 
-### Step 1: Mean Time $ T_{10} $
+### Step 1: Mean Time $T_{10}$
 
 $$
 T_{10} = \frac{1}{5} \sum_{i=1}^{5} T_{10,i} = \frac{10.3 + 10.0 + 10.4 + 10.8 + 10.2}{5} = 10.34 \, \text{s}
@@ -428,7 +428,7 @@ $$
 
 ---
 
-### Step 2: Standard Deviation $ \sigma_T $
+### Step 2: Standard Deviation $\sigma_T$
 
 $$
 \sigma_T = \sqrt{\frac{1}{n - 1} \sum_{i=1}^{n} (T_{10,i} - \overline{T}_{10})^2} = 0.2828 \, \text{s}
@@ -436,7 +436,7 @@ $$
 
 ---
 
-### Step 3: Uncertainty in the Mean $ \Delta T_{10} $
+### Step 3: Uncertainty in the Mean $\Delta T_{10}$
 
 $$
 \Delta T_{10} = \frac{\sigma_T}{\sqrt{n}} = \frac{0.2828}{\sqrt{5}} = 0.1264 \, \text{s}
@@ -456,7 +456,7 @@ $$
 
 ---
 
-### Step 5: Calculated Gravitational Acceleration $ g $
+### Step 5: Calculated Gravitational Acceleration $g$
 
 $$
 g = \frac{4 \pi^2 \cdot L}{T^2} = \frac{4 \cdot \pi^2 \cdot 0.30}{(1.034)^2} = \frac{11.84}{1.069} = 11.07 \, \text{m/s}^2
@@ -464,7 +464,7 @@ $$
 
 ---
 
-### Step 6: Uncertainty in $ g $
+### Step 6: Uncertainty in $g$
 
 $$
 \Delta g = g \cdot \sqrt{\left(\frac{\Delta L}{L}\right)^2 + \left(2 \cdot \frac{\Delta T}{T}\right)^2}
